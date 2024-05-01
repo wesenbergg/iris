@@ -1,0 +1,26 @@
+[
+  {
+    "name": "borre",
+    "email": "borre@mail.com",
+    "image": "string",
+    "firstName": "Boriss",
+    "lastName": "Jerjomkin",
+    "passwordHash": "sanasala123"
+  },
+  {
+    "name": "mikko",
+    "email": "mikko@mail.com",
+    "image": "string",
+    "firstName": "Mikko",
+    "lastName": "Mallikas",
+    "passwordHash": "sanasala123"
+  },
+  {
+    "name": "maija",
+    "email": "maija@mail.com",
+    "image": "string",
+    "firstName": "Maija",
+    "lastName": "Meikäläinen",
+    "passwordHash": "sanasala123"
+  }
+]
