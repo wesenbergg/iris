@@ -1,22 +1,43 @@
-import { contrast, luminance } from "@/utils/color";
+"use client";
+import { contrast, hexToRgb, luminance } from "@/utils/color";
+import { useCallback, useMemo, useState } from "react";
 
 const ColorContrast = () => {
-  const color1: [number, number, number] = [234, 50, 50];
-  const color2: [number, number, number] = [0, 0, 0];
+  const [color1, setColor1] = useState("#ff3434");
 
+  // 82, 128, 97 // Luminance 0.1801
   return (
     <div className="mb-8 flex flex-col justify-start">
-      <div
-        className="mx-4 my-4 h-16 w-16 rounded shadow"
-        style={{ background: `rgb(${color1[0]}, ${color1[1]}, ${color1[2]})` }}
-      >
-        <span
-          style={{ color: `rgb(${color2[0]}, ${color2[1]}, ${color2[2]})` }}
-        >
-          {contrast(color1, color2).toFixed(2)}
-        </span>
+      <input
+        type="color"
+        value={color1}
+        onChange={(e) => setColor1(e.target.value)}
+        className="self-end"
+      />
+      <div className="mb-24 flex space-x-32">
+        <div>
+          <button
+            className="my-4 block rounded px-8 py-2 font-bold text-white shadow"
+            style={{ background: color1 }}
+          >
+            White Text Button
+          </button>
+          <span>contrast: {contrast(hexToRgb(color1), [255, 255, 255])}</span>
+        </div>
+        <div>
+          <button
+            className="my-4 block rounded px-8 py-2 font-bold text-black shadow"
+            style={{ background: color1 }}
+          >
+            Black Text Button
+          </button>
+          <span>contrast: {contrast(hexToRgb(color1), [0, 0, 0])}</span>
+        </div>
       </div>
-      <span>{(luminance([188, 188, 188]) + 0.05) / (0.05 + 0.05)}</span>
+      <span>luminance: {luminance(hexToRgb(color1))}</span>
+      {/* <span>
+        contrast: {(luminance([188, 188, 188]) + 0.05) / (0.05 + 0.05)}
+      </span> */}
     </div>
   );
 };
